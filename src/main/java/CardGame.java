@@ -1,0 +1,36 @@
+package main.java;
+
+import java.util.ArrayList;
+
+public class CardGame {
+    private String name;
+    protected ArrayList<Card> deckOfCards;
+
+    public CardGame(String name) {
+        this.name = name;
+        this.deckOfCards = createDeck();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Card> createDeck() {
+        ArrayList<Card> newDeck = new ArrayList<Card>();
+        String[] suits = { "HEARTS", "CLUBS", "DIAMONDS", "SPADES" };
+        String[] symbols = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
+        for (String suit : suits) {
+            for (String symbol : symbols) {
+                newDeck.add(new Card(suit, symbol));
+            }
+        }
+        return newDeck;
+    }
+
+    public void getDeck() {
+        for (Card card : deckOfCards) {
+            System.out.println(card);
+        }
+    }
+
+}
