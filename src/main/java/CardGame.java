@@ -31,6 +31,15 @@ public class CardGame {
         for (Card card : deckOfCards) {
             System.out.println(card);
         }
+        System.out.println("-".repeat(20));
+    }
+
+    public Card dealCard() {
+        Card cardToDeal = deckOfCards.get(0);
+        deckOfCards.remove(0);
+        System.out.println("Dealt " + cardToDeal);
+        System.out.println("-".repeat(20));
+        return cardToDeal;
     }
 
 }
