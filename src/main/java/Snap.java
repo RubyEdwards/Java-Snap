@@ -8,20 +8,30 @@ public class Snap extends CardGame {
 
     public void play() {
         int count = 0;
-        String input = System.console().readLine("Hit enter to play!");
+        Card previous = this.dealCard();
+
+        String input = System.console().readLine("Hit enter to play! ");
 
         while (deckOfCards.size() > 0) {
             if (input.length() != 0) {
-                input = System.console().readLine("Invalid character! Please hit enter to play!");
+                input = System.console().readLine("Invalid character! Please hit enter to play! ");
             } else {
                 count++;
                 System.out.print("Turn " + count + ": ");
-                this.dealCard();
-                input = System.console().readLine();
+                Card current = this.dealCard();
+                if (current.getSuit() == previous.getSuit()) {
+                    System.out.println("You win! Snap with " + current.getSuit());
+                    break;
+                } else {
+                    previous = current;
+                    input = System.console().readLine();
+                }
             }
         }
 
-        System.out.println("No more cards to play!");
+        if (deckOfCards.size() == 0) {
+            System.out.println("No snap in this deck! Please try again");
+        }
 
     }
 
