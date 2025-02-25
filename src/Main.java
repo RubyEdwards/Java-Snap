@@ -9,5 +9,7 @@ public class Main {
         snap.getDeck();
         snap.sortDeckInNumberOrder();
         snap.getDeck();
+        snap.sortDeckIntoSuits();
+        snap.getDeck();
     }
 }
