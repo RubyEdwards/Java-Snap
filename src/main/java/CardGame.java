@@ -1,6 +1,7 @@
 package main.java;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CardGame {
     private String name;
@@ -40,6 +41,11 @@ public class CardGame {
         System.out.println("Dealt " + cardToDeal);
         System.out.println("-".repeat(20));
         return cardToDeal;
+    }
+
+    public ArrayList<Card> sortDeckInNumberOrder() {
+        deckOfCards.sort((card1, card2) -> Integer.compare(card1.getValue(), card2.getValue()));
+        return deckOfCards;
     }
 
 }
