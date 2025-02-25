@@ -7,5 +7,7 @@ public class Main {
         snap.getDeck();
         snap.dealCard();
         snap.getDeck();
+        snap.sortDeckInNumberOrder();
+        snap.getDeck();
     }
 }
