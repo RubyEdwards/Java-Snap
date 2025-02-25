@@ -11,5 +11,7 @@ public class Main {
         snap.getDeck();
         snap.sortDeckIntoSuits();
         snap.getDeck();
+        snap.shuffleDeck();
+        snap.getDeck();
     }
 }
