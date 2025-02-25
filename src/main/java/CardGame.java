@@ -48,4 +48,10 @@ public class CardGame {
         return deckOfCards;
     }
 
+    public ArrayList<Card> sortDeckIntoSuits() {
+        sortDeckInNumberOrder();
+        deckOfCards.sort((card1, card2) -> card1.getSuit().compareTo(card2.getSuit()));
+        return deckOfCards;
+    }
+
 }
