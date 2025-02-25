@@ -1,4 +1,5 @@
 import main.java.CardGame;
+import main.java.Player;
 import main.java.Snap;
 
 public class Main {
@@ -18,5 +19,11 @@ public class Main {
         Snap newSnap = new Snap("snap");
         newSnap.shuffleDeck();
         newSnap.play();
+
+        Player playerOne = new Player("Ruby");
+        Player playerTwo = new Player("Bob");
+        Snap multiplayerSnap = new Snap("snap", playerOne, playerTwo);
+        multiplayerSnap.shuffleDeck();
+        multiplayerSnap.play(playerOne, playerTwo);
     }
 }
