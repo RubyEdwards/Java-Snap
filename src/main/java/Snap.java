@@ -28,6 +28,7 @@ public class Snap extends CardGame {
     public void play() {
         int count = 0;
         Card previous = this.dealCard();
+        String prevSuit = previous.getSuit();
 
         String input = System.console().readLine("Hit enter to play! ");
 
@@ -38,7 +39,8 @@ public class Snap extends CardGame {
                 count++;
                 System.out.print("Turn " + count + ": ");
                 Card current = this.dealCard();
-                if (current.getSuit() == previous.getSuit()) {
+                String currSuit = current.getSuit();
+                if (currSuit == prevSuit) {
                     System.out.println("You win! Snap with " + current.getSuit());
                     break;
                 } else {
@@ -56,8 +58,9 @@ public class Snap extends CardGame {
 
     public void play(Player playerOne, Player playerTwo) {
         int count = 0;
-        Player currentPlayer = playerOne;
+        String currentPlayer = playerOne.getName();
         Card previous = this.dealCard();
+        String prevSuit = previous.getSuit();
 
         String input = System.console().readLine("Hit enter to play! ");
 
@@ -67,15 +70,16 @@ public class Snap extends CardGame {
             } else {
                 count++;
                 if (count % 2 == 1) {
-                    currentPlayer = playerOne;
+                    currentPlayer = playerOne.getName();
                 } else {
-                    currentPlayer = playerTwo;
+                    currentPlayer = playerTwo.getName();
                 }
-                System.out.print("Turn " + count + " (" + currentPlayer.getName() + "): ");
+                System.out.print("Turn " + count + " (" + currentPlayer + "): ");
                 Card current = this.dealCard();
+                String currSuit = current.getSuit();
 
-                if (current.getSuit() == previous.getSuit()) {
-                    String winner = currentPlayer.getName();
+                if (currSuit == prevSuit) {
+                    String winner = currentPlayer;
                     TimerTask shutdown = new TimerTask() {
                         public void run() {
                             System.out.println(winner + " loses! Snap with " + current.getSuit()
@@ -87,17 +91,16 @@ public class Snap extends CardGame {
                     timer.schedule(shutdown, 2000);
                     String snapEntry = System.console().readLine();
                     if (snapEntry.equals("snap")) {
-                        System.out.println(winner + " wins! Snap with " + current.getSuit());
+                        System.out.println(currentPlayer + " wins! Snap with " + current.getSuit());
                         System.exit(0);
-                        // break;
                     } else {
                         System.out.println(winner + " loses! Snap with " + current.getSuit()
                                 + " but you didn't enter snap :(");
                         System.exit(0);
-                        // break;
                     }
                 } else {
                     previous = current;
+                    prevSuit = currSuit;
                     input = System.console().readLine();
                 }
             }
